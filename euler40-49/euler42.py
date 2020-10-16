@@ -8,7 +8,6 @@
 from string import ascii_uppercase
 
 
-
 def word_value(word, char_value):
     return sum(char_value[char] for char in word)
 
