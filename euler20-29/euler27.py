@@ -5,9 +5,12 @@
     2020
 """
 
-def is_prime(number):
-    return number > 1 and all(number%div != 0 for div in range(2, int(number**.5) + 1))
-
+def is_prime(num):
+    return (
+        num > 1
+        and (num % 2 != 0 or num == 2)
+        and all(num % div != 0 for div in range(3, int(num ** .5) + 1, 2))
+    )
 
 def quadratic(a, b, n):
     return n*n + a*n + b

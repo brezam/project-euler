@@ -8,8 +8,12 @@
 from itertools import permutations
 
 
-def is_prime(n):
-    return n > 1 and all(n%d != 0 for d in range(2, int(n**.5) + 1))
+def is_prime(num):
+    return (
+        num > 1
+        and (num % 2 != 0 or num == 2)
+        and all(num % div != 0 for div in range(3, int(num ** 0.5) + 1, 2))
+    )
 
 
 for endpoint in range(10, 1, -1):
@@ -20,6 +24,6 @@ for endpoint in range(10, 1, -1):
     if best_prime:
         answer = best_prime
         break
-    
+
 print(answer)
 # 7652413
