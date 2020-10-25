@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 """
-    euler46.py
+    euler47.py
     2020
 """
 
@@ -21,8 +21,8 @@ def factorize(number):
                 factors.append(number)
             return factors
 
-number_in_a_row = 4
 
+number_in_a_row = 4
 n = 1
 while n < 1_000_000:
     for m in range(number_in_a_row):
