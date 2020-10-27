@@ -28,8 +28,8 @@ triangle = [[int(n) for n in row.split()] for row in triangle_rows]
 
 best_sum = 0
 for offsets in product(range(2), repeat=len(triangle_rows)-1):
-    indexes = list(accumulate(offsets))
-    path_sum = triangle[0][0] + sum(row[idx] for idx, row in zip(accumulate(offsets), triangle[1:]))
+    indexes = accumulate(offsets)
+    path_sum = triangle[0][0] + sum(row[idx] for idx, row in zip(indexes, triangle[1:]))
     if path_sum > best_sum:
         best_sum = path_sum
 
