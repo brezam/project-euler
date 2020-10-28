@@ -43,13 +43,13 @@ for i in range(20-3):
         row = prod(grid[i][j+n] for n in range(4))
         col = prod(grid[i+n][j] for n in range(4))
         dia = prod(grid[i+n][j+n] for n in range(4))
-        best = max((best, row, col, dia))
+        best = max(best, row, col, dia)
 
 # diagonal bottom-left -> up-right
 for i in range(3, 20):
     for j in range(20-3):
         dia2 = prod(grid[i-n][j+n] for n in range(4))
-        best = max((best, dia2))
+        best = max(best, dia2)
 
 print(best)
 # 70600674
