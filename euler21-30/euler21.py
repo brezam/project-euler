@@ -5,11 +5,13 @@
     2020
 """
 
+
 def sum_divisors(number):
     return sum(num for div in range(1, int(number**.5)+1) 
                 if number%div==0 
                 for num in {div, number//div}
                 if num != number)
+
 
 seen = set()
 numbers = []
