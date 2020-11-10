@@ -19,6 +19,7 @@ def triangle_numbers_generator(ceiling):
         number = index * (index + 1) // 2
         index += 1
 
+
 def main():
     char_value = dict(zip(ascii_uppercase, range(1, 27)))
     words = []
@@ -32,6 +33,7 @@ def main():
     count = sum(1 for word in words if word_value(word, char_value) in triangle_nums)
     print(count)
     # 162
+
 
 if __name__ == "__main__":
     main()

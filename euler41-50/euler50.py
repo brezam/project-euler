@@ -30,5 +30,6 @@ def best_consecutive_sum(prime_array: np.ndarray):
             if total in setprimes:
                 return total, length
 
+
 print(best_consecutive_sum(sieve(1_000_000)))
 # (997651, 543)
