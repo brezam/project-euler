@@ -8,11 +8,13 @@
 import itertools
 
 
-def is_prime(n):
-    return (n > 1 and
-        (n % 2 or n == 2) and
-        all(n%d != 0 for d in range(3, int(n**.5)+1, 2))
-    )
+def is_prime(n: int) -> bool:
+    ''' 6k+-1 primality test '''
+    if n < 4:
+        return n > 1
+    if n % 2 == 0 or n % 3 == 0:
+        return False
+    return all(n % i and n % (i + 2) for i in range(5, int(n**.5)+1, 6))
 
 
 def permutation_triple(permutations):
