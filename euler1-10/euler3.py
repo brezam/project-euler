@@ -5,6 +5,7 @@
     2020
 """
 
+
 def factorize(number):
     factors = []
     while number > 1:
@@ -16,6 +17,7 @@ def factorize(number):
         else:
             factors.append(number)
             return factors
+
 
 print(max(factorize(600851475143)))
 # 6857

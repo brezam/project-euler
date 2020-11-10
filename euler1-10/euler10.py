@@ -5,7 +5,9 @@
     2020
 """
 
+
 import numpy as np
+
 
 def sieve(n):
     """ Sieve of Erathostenes using numpy"""
@@ -15,6 +17,7 @@ def sieve(n):
         if primes[i]:
             primes[i*i::i] = False
     return np.nonzero(primes)[0]
+
 
 print(sum(sieve(2_000_000)))
 # 142913828922
