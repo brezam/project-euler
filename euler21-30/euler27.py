@@ -5,12 +5,14 @@
     2020
 """
 
-def is_prime(num):
-    return (
-        num > 1
-        and (num % 2 != 0 or num == 2)
-        and all(num % div != 0 for div in range(3, int(num ** .5) + 1, 2))
-    )
+def is_prime(n: int) -> bool:
+    ''' 6k+-1 primality test '''
+    if n < 4:
+        return n > 1
+    if n % 2 == 0 or n % 3 == 0:
+        return False
+    return all(n % i and n % (i + 2) for i in range(5, int(n**.5)+1, 6))
+
 
 def quadratic(a, b, n):
     return n*n + a*n + b
