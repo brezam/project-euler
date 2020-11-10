@@ -5,8 +5,10 @@
     2020
 """
 
+
 def count_divisors(number):
     return sum(2 for div in range(1, int(number**.5)+1) if number%div==0) - (number%2==0)
+
 
 def triangle_numbers(max_idx):
     total = 0
