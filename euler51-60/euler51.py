@@ -22,7 +22,7 @@ def sieve(n):
 
 def smallest_prime(prime_list):
     setprimes = set(primes)
-    for p in primes:
+    for p in prime_list:
         str_p = str(p)
         for no_digits in range(1, len(str_p)):
             for comb in itertools.combinations(range(len(str_p)), r=no_digits):
