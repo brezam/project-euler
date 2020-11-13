@@ -3,5 +3,5 @@
 ## Solved so far:
 
 - [x] 0 - 50 <img src="https://projecteuler.net/images/awards/award_04.png" width=25>
-- [x] 51
-- [ ] 52+
+- [x] 51 - 54
+- [ ] 55+
