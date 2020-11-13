@@ -20,9 +20,9 @@ def sieve(n):
     return np.nonzero(primes)[0]
 
 
-def smallest_prime(prime_list):
-    setprimes = set(primes)
-    for p in prime_list:
+def smallest_prime(ascending_primes):
+    primes = dict.fromkeys(ascending_primes) # dict instead of set to maintain insertion order
+    for p in primes:
         str_p = str(p)
         for no_digits in range(1, len(str_p)):
             for comb in itertools.combinations(range(len(str_p)), r=no_digits):
@@ -35,7 +35,7 @@ def smallest_prime(prime_list):
                     failure = 0
                 for digit in digits_to_check:
                     new_number = int(''.join(digit if i in comb else d for i, d in enumerate(str_p)))
-                    if new_number not in setprimes:
+                    if new_number not in primes:
                         failure += 1
                         if failure == 3:
                             break
@@ -45,6 +45,6 @@ def smallest_prime(prime_list):
                     return min(group), group
 
 
-primes = sieve(1_000_000).tolist()
+primes = sieve(1_000_000)
 print(smallest_prime(primes))
 # (121313, [121313, 222323, 323333, 424343, 525353, 626363, 828383, 929393])
