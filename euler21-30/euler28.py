@@ -24,7 +24,7 @@ def sum_diagonals(table):
         element
         for i, row in enumerate(table)
         for j, element in enumerate(row)
-        if i == j or j == len(table[i]) - 1 - i
+        if i == j or j == len(row) - 1 - i
     )
 
 size = 1001
