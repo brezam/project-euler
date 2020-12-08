@@ -7,7 +7,8 @@
 
 
 def count_divisors(number):
-    return sum(2 for div in range(1, int(number**.5)+1) if number%div==0) - (number%2==0)
+    sqrt = int(number ** 0.5)
+    return sum(2 for div in range(1, int(number**.5)+1) if number%div==0) - (sqrt*sqrt == number)
 
 
 def triangle_numbers(max_idx):
