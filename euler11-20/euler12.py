@@ -2,13 +2,17 @@
 
 """
     euler12.py
-    2020
+    2021
 """
 
 
-def count_divisors(number):
-    sqrt = int(number ** 0.5)
-    return sum(2 for div in range(1, int(number**.5)+1) if number%div==0) - (sqrt*sqrt == number)
+def count_divisors(positive):
+    if positive < 1: 
+        return 0
+    sqrt = int(positive ** 0.5)
+    step = 2 if positive % 2 else 1
+    return sum(2 for div in range(1, int(positive**.5)+1, step) if positive%div==0
+    ) - (sqrt*sqrt == positive)
 
 
 def triangle_numbers(max_idx):
