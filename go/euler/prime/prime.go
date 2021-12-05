@@ -5,13 +5,13 @@ import (
 )
 
 // Returns all primes below `n` using Sieve of Eratosthenes
-func SievePrime(n uint32) []uint32 {
+func SievePrime(n uint) []uint {
 	primes := make([]bool, n)
-	answer := []uint32{}
+	answer := []uint{}
 	primes[0] = true
 	primes[1] = true
-	maxNumberToCheck := uint32(math.Sqrt(float64(n)))
-	for i := uint32(2); i <= maxNumberToCheck; i++ {
+	maxNumberToCheck := uint(math.Sqrt(float64(n)))
+	for i := uint(2); i <= maxNumberToCheck; i++ {
 		if !primes[i] {
 			for j := i * i; j < n; j += i {
 				primes[j] = true
@@ -20,7 +20,7 @@ func SievePrime(n uint32) []uint32 {
 	}
 	for i, b := range primes {
 		if !b {
-			answer = append(answer, uint32(i))
+			answer = append(answer, uint(i))
 		}
 	}
 	return answer
