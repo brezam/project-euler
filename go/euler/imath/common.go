@@ -52,12 +52,13 @@ func MinSlice(slice []int) (int, error) {
 	return total, errors.New("empty slice")
 }
 
-// Calculates the product of all the elements in `nums`.
-// When `nums` is empty, returns 1.
-func ProdSlice(nums []int) int {
-	total := 1
+// Performs reduction on nums by successive calling `intSliceReducer`.
+// Parameter `intSliceReducer` must be a function that accepts two parameters, the accumulator and new value, respectively.
+// Parameter `start` is the initial value for the accumulator.
+func ReduceSlice(nums []int, intSliceReducer func(int, int) int, start int) int {
+	total := start
 	for _, v := range nums {
-		total *= v
+		total = intSliceReducer(total, v)
 	}
 	return total
 }
@@ -118,4 +119,28 @@ func LcmSlice(nums []int) int {
 		}
 		return acc
 	}
+}
+
+// Calculates all factors of `n`
+func AllFactors(n int) []int {
+	if n < 1 {
+		return []int{}
+	} else if n == 1 {
+		return []int{1}
+	}
+	factors := []int{1}
+	revFactors := []int{n}
+	for i := 2; i <= int(math.Sqrt(float64(n))); i++ {
+		if n%i == 0 {
+			factors = append(factors, i)
+			other := n / i
+			if other != i {
+				revFactors = append(revFactors, n/i)
+			}
+		}
+	}
+	for i := len(revFactors) - 1; i >= 0; i-- {
+		factors = append(factors, revFactors[i])
+	}
+	return factors
 }

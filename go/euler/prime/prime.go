@@ -42,3 +42,20 @@ func IsPrime(n uint) bool {
 	}
 	return true
 }
+
+// returns prime factors of `number`
+func PrimeFactors(number int) []int {
+	var factors []int
+numberLoop:
+	for number > 1 {
+		for i := 2; i*i <= number; i++ {
+			if number%i == 0 {
+				factors = append(factors, i)
+				number /= i
+				continue numberLoop
+			}
+		}
+		factors = append(factors, number)
+	}
+	return factors
+}
