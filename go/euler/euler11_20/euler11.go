@@ -1,7 +1,8 @@
 package euler11_20
 
 import (
-	"euler/imath"
+	"euler/mymath"
+	"euler/util"
 	"math"
 	"strconv"
 	"strings"
@@ -65,18 +66,18 @@ func Euler11Solve() int {
 	// horizontal, vertical, diagonal up-left -> down-right
 	for i := 0; i < height-3; i++ {
 		for j := 0; j < width-3; j++ {
-			row := imath.ReduceSlice(sliceGrid(grid, i, j, 0, 1, 4), prodFunc, 1)
-			col := imath.ReduceSlice(sliceGrid(grid, i, j, 1, 0, 4), prodFunc, 1)
-			dia := imath.ReduceSlice(sliceGrid(grid, i, j, 1, 1, 4), prodFunc, 1)
-			best, _ = imath.MaxSlice([]int{row, col, dia, best})
+			row := util.ReduceSlice(sliceGrid(grid, i, j, 0, 1, 4), prodFunc, 1)
+			col := util.ReduceSlice(sliceGrid(grid, i, j, 1, 0, 4), prodFunc, 1)
+			dia := util.ReduceSlice(sliceGrid(grid, i, j, 1, 1, 4), prodFunc, 1)
+			best, _ = mymath.Max(row, col, dia, best)
 		}
 	}
 
 	// diagonal bottom-left -> up-right
 	for i := 3; i < height; i++ {
 		for j := 0; j < width-3; j++ {
-			dia2 := imath.ReduceSlice(sliceGrid(grid, i, j, -1, 1, 4), prodFunc, 1)
-			best = imath.Max(dia2, best)
+			dia2 := util.ReduceSlice(sliceGrid(grid, i, j, -1, 1, 4), prodFunc, 1)
+			best, _ = mymath.Max(dia2, best)
 		}
 	}
 	return best

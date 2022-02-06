@@ -1,6 +1,6 @@
 package euler11_20
 
-import "euler/imath"
+import "euler/mymath"
 
 func triangleNumberGenerator() func() int {
 	total := 0
@@ -16,7 +16,7 @@ func Euler12Solve() int {
 	gen := triangleNumberGenerator()
 	for {
 		n := gen()
-		numOfDivisors := len(imath.AllFactors(n))
+		numOfDivisors := len(mymath.AllFactors(n))
 		if numOfDivisors > 500 {
 			return n
 		}

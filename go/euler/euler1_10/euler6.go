@@ -1,6 +1,6 @@
 package euler1_10
 
-import "euler/imath"
+import "euler/mymath"
 
 func sumOfSquares(nums []int) int {
 	total := 0
@@ -19,6 +19,6 @@ func squareOfSum(nums []int) int {
 }
 
 func Euler6Solve() int {
-	nums := imath.CreateRange(1, 101)
+	nums := mymath.CreateRange(1, 101)
 	return squareOfSum(nums) - sumOfSquares(nums)
 }

@@ -1,8 +1,8 @@
 package euler1_10
 
 import (
-	"euler/data_structures"
-	"euler/imath"
+	"strconv"
+	"strings"
 )
 
 var numberString = "73167176531330624919225119674426574742355349194934" +
@@ -26,34 +26,27 @@ var numberString = "73167176531330624919225119674426574742355349194934" +
 	"05886116467109405077541002256983155200055935729725" +
 	"71636269561882670428252483600823257530420752963450"
 
-func initializeDeque(str string, startNumberOfChars int) *data_structures.IntDequeImpl {
-	nums := make([]int, startNumberOfChars)
-	for i := 0; i < startNumberOfChars; i++ {
-		nums[i] = int(numberString[i] - '0')
+func prodSlice(str string) int {
+	prod := 1
+	for i := 0; i < len(str); i++ {
+		digit, _ := strconv.Atoi(string(str[i]))
+		prod *= digit
 	}
-	return data_structures.IntDequefromSlice(nums)
-}
-
-func prodDeque(deq *data_structures.IntDequeImpl) int {
-	iter := deq.Iter()
-	total := 1
-	for {
-		v, finished := iter()
-		if finished {
-			break
-		}
-		total *= v
-	}
-	return total
+	return prod
 }
 
 func Euler8Solve() int {
-	deq := initializeDeque(numberString, 13)
-	max := prodDeque(deq)
-	for i := 13; i < len(numberString); i++ {
-		deq.PopLeft()
-		deq.AppendRight(int(numberString[i] - '0'))
-		max = imath.Max(max, prodDeque(deq))
+	prod := 1
+	max := prod
+	for i := 0; i < len(numberString) - 12; i++ {
+		slice := numberString[i:i+13]
+		if strings.ContainsRune(slice, '0') {
+			continue
+		}
+		prod = prodSlice(slice)
+		if prod > max {
+			max = prod
+		}
 	}
 	return max
 }

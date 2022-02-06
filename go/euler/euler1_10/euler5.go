@@ -1,7 +1,7 @@
 package euler1_10
 
-import "euler/imath"
+import "euler/mymath"
 
 func Euler5Solve() int {
-	return imath.LcmSlice(imath.CreateRange(1, 21))
+	return mymath.Lcm(mymath.CreateRange(1, 21)...)
 }
